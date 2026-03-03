@@ -24,8 +24,7 @@ The hub is the only thing that talks to both the Pi and the simulation. The Pi a
 | Component | Machine | How to start |
 |---|---|---|
 | Hub + Dashboard | Laptop | `python3 -m uvicorn server.main:app --host 0.0.0.0 --port 8000` |
-| Simulation stub | Laptop | `python3 -m uvicorn simulation_stub:app --port 8001` (in `lift_actuator_sim/`) |
-| Voice client | Pi | `python3 voice/main.py` |
+| Simulation stub | Laptop | `python3 -m uvicorn simulation_stub:app --port 8001` (run from `lift_actuator_sim/`) || Voice client | Pi | `python3 voice/main.py` |
 
 Start order: simulation → hub → Pi client.
 
@@ -77,8 +76,9 @@ Say "Ableware" to wake it, then say a command: **up, down, start, stop, left, ri
 
 If you're working on the simulation side and don't have a Pi, you don't need one. The dashboard has manual control buttons that send the same commands the Pi would send.
 
-1. Start the simulation stub (from `lift_actuator_sim/`):
+1. Start the simulation stub:
 ```bash
+cd lift_actuator_sim
 python3 -m uvicorn simulation_stub:app --port 8001
 ```
 
